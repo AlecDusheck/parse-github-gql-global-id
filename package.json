@@ -28,6 +28,10 @@
     "global-id",
     "msgpack"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlecDusheck/parse-github-gql-global-id"
+  },
   "packageManager": "pnpm@10.29.3",
   "license": "MIT",
   "devDependencies": {

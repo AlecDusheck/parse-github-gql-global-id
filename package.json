@@ -1,6 +1,6 @@
 {
   "name": "parse-github-gql-global-id",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "Encode and decode GitHub GraphQL global node IDs (the new MessagePack format)",
   "type": "module",
   "main": "dist/index.js",

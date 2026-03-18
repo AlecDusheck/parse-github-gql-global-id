@@ -1,0 +1,39 @@
+{
+  "name": "parse-github-gql-global-id",
+  "version": "0.1.0",
+  "description": "Encode and decode GitHub GraphQL global node IDs (the new MessagePack format)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --exclude 'test/online.test.ts'",
+    "test-online": "vitest run test/online.test.ts",
+    "lint": "oxlint ."
+  },
+  "keywords": [
+    "github",
+    "graphql",
+    "node-id",
+    "global-id",
+    "msgpack"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "oxlint": "^0.17.0",
+    "typescript": "^5.8.0",
+    "vitest": "^4.1.0",
+    "zod": "^4.3.0"
+  }
+}

@@ -1,7 +1,7 @@
 import { resolve } from 'node:path';
 import { describe, it, expect } from 'vitest';
 import { z } from 'zod';
-import { encodeUserNodeId, encodeRepoNodeId, extractDatabaseId } from '../src/index';
+import { encodeNodeId, encodeUserNodeId, encodeRepoNodeId, extractDatabaseId, decodeNodeId } from '../src/index';
 
 try {
   process.loadEnvFile(resolve(import.meta.dirname, '..', '.env'));
@@ -178,7 +178,10 @@ describe('node ID encoding against live GitHub API', { timeout: 30000 }, () => {
     const decoded = extractDatabaseId(viewer.id);
     expect(decoded).toBe(viewer.databaseId);
 
-    const reEncoded = encodeUserNodeId(viewer.databaseId);
+    // viewer may be a User or a Bot (e.g. GITHUB_TOKEN in CI authenticates as a Bot)
+    const { prefix } = decodeNodeId(viewer.id);
+    const type = prefix === 'BOT_' ? 'Bot' : 'User';
+    const reEncoded = encodeNodeId(type, viewer.databaseId);
     expect(reEncoded).toBe(viewer.id);
   });
 

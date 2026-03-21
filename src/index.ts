@@ -11,6 +11,7 @@
 
 const NODE_ID_PREFIXES = {
   User: 'U_',
+  Bot: 'BOT_',
   Repository: 'R_',
   Issue: 'I_',
   PullRequest: 'PR_',
@@ -134,6 +135,8 @@ export const decodeNodeId = (nodeId: string): { prefix: string; ids: ReadonlyArr
 };
 
 export const encodeUserNodeId = (databaseId: number): string => encodeNodeId('User', databaseId);
+
+export const encodeBotNodeId = (databaseId: number): string => encodeNodeId('Bot', databaseId);
 
 export const encodeRepoNodeId = (databaseId: number): string => encodeNodeId('Repository', databaseId);
 
